@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Diggers Play – RC Construction Play Experience</title>
+<meta name="description" content="Portable RC digger play experience for festivals, birthday parties, schools and events. Kids and adults operate real remote-control excavators in a supervised sand arena.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow: #F5C400;
+    --yellow-dark: #C99900;
+    --black: #1A1A1A;
+    --off-black: #2B2B2B;
+    --white: #FFFFFF;
+    --light: #F7F5F0;
+    --mid: #E8E4DA;
+    --text: #1A1A1A;
+    --muted: #666;
+    --stripe: repeating-linear-gradient(
+      -45deg,
+      var(--yellow) 0px,
+      var(--yellow) 12px,
+      var(--black) 12px,
+      var(--black) 24px
+    );
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--black);
+    border-bottom: 3px solid var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--yellow);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--white); }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--yellow);
+    color: var(--black) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 60px;
+    min-height: 92vh;
+    background: var(--black);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-hazard {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: var(--stripe);
+    z-index: 3;
+  }
+
+  .hero-hazard-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 8px;
+    background: var(--stripe);
+    z-index: 3;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 8px;
+    background: url('images/action-diggers.jpg') center/cover no-repeat;
+    opacity: 0.28;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 5vw;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em {
+    color: var(--yellow);
+    font-style: normal;
+    display: block;
+  }
+
+  .hero-sub {
+    color: #ccc;
+    font-size: 1.15rem;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 0.9rem 2rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: #ffd700; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  .hero-stats {
+    position: absolute;
+    right: 5vw;
+    bottom: 4rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+  }
+
+  .stat-pill {
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.9rem 1.4rem;
+    text-align: right;
+    backdrop-filter: blur(4px);
+  }
+
+  .stat-pill .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--yellow);
+    line-height: 1;
+  }
+
+  .stat-pill .label {
+    font-size: 0.75rem;
+    color: #ccc;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 5rem 5vw; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--yellow);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    color: var(--black);
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* ── WHAT IS IT ── */
+  .what {
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .what-visual {
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid var(--black);
+  }
+
+  .what-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .what-visual-tag {
+    position: absolute;
+    bottom: 0; left: 0;
+    z-index: 2;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.98rem;
+    color: var(--off-black);
+    line-height: 1.6;
+  }
+
+  .feature-list .check {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    font-size: 0.75rem;
+  }
+
+  /* ── GALLERY STRIP ── */
+  .gallery {
+    background: var(--black);
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .how h2 { color: var(--white); }
+
+  .how .lead { color: #aaa; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 2rem;
+  }
+
+  .step {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+
+  .step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(245,196,0,0.18);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .step p { font-size: 0.9rem; color: #aaa; line-height: 1.7; }
+
+  /* ── TIERS (replaces pricing) ── */
+  .tiers { background: var(--white); }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tier-card {
+    border: 1.5px solid var(--mid);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .tier-card:hover { border-color: var(--yellow); transform: translateY(-3px); }
+
+  .tier-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tier-age {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .tier-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .tier-desc {
+    font-size: 0.95rem;
+    color: var(--off-black);
+    line-height: 1.7;
+  }
+
+  /* ── EVENTS ── */
+  .events { background: var(--light); }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--mid);
+    border: 1px solid var(--mid);
+    margin-top: 2rem;
+  }
+
+  .event-tile {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .event-tile:hover { background: var(--black); }
+  .event-tile:hover .event-icon { color: var(--yellow); }
+  .event-tile:hover .event-name { color: var(--white); }
+  .event-tile:hover .event-desc { color: #aaa; }
+
+  .event-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--yellow);
+    transition: color 0.2s;
+  }
+
+  .event-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .event-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+
+  /* ── HIRE ── */
+  .hire { background: var(--white); }
+
+  .hire-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .hire-card {
+    background: var(--black);
+    color: var(--white);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hire-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--yellow);
+  }
+
+  .hire-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .hire-card p { font-size: 0.9rem; color: #bbb; line-height: 1.7; margin-bottom: 1.25rem; }
+
+  .hire-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hire-includes li {
+    font-size: 0.88rem;
+    color: #ddd;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .hire-includes li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--light); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--mid);
+    padding: 1.75rem;
+  }
+
+  .stars {
+    color: var(--yellow);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+  }
+
+  .testi-card p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--off-black);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .testi-author {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── BOOKING ── */
+  .booking {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booking-hazard {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--stripe);
+  }
+
+  .booking h2 { color: var(--white); }
+  .booking .lead { color: #aaa; }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact-item .label {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 600;
+  }
+
+  .contact-item .value {
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .contact-item .value a { color: var(--yellow); text-decoration: none; }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--yellow);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: #555; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    margin-top: 1.5rem;
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: #ffd700; }
+
+  .form-note {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f0f0f;
+    padding: 3rem 5vw;
+    border-top: 3px solid var(--yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+
+  .footer-logo span { color: var(--white); }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero-stats { display: none; }
+    .hero h1 { font-size: 3.5rem; }
+    .what-grid { grid-template-columns: 1fr; }
+    .tiers-grid { grid-template-columns: 1fr; }
+    .hire-cards { grid-template-columns: 1fr; }
+    .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 3.5rem 1.25rem; }
+    footer { flex-direction: column; text-align: center; }
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#top" class="nav-logo">The Diggers <span>Play</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#hire">Hire Us</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-hazard"></div>
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Live RC Construction Experience</div>
+    <h1>Grab the<em>Controls.</em></h1>
+    <p class="hero-sub">
+      Real remote-control excavators. Real sand. A proper construction site, set up anywhere — festivals, birthday parties, schools, shopping centres and corporate events.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Enquire to Book</a>
+      <a href="#about" class="btn-outline">See How It Works</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-pill">
+      <div class="num">3+</div>
+      <div class="label">Ages welcome</div>
+    </div>
+    <div class="stat-pill">
+      <div class="num">Indoor &amp; Out</div>
+      <div class="label">Fully portable</div>
+    </div>
+    <div class="stat-pill">
+      <div class="num">90 min</div>
+      <div class="label">Setup time</div>
+    </div>
+  </div>
+
+  <div class="hero-hazard-bottom"></div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="what" id="about">
+  <div class="what-grid">
+    <div>
+      <div class="section-tag">What We Do</div>
+      <h2>A Mini Construction Site You Can Actually Operate</h2>
+      <p class="lead">
+        We bring a fully equipped RC digger arena to your event. Visitors operate real remote-controlled excavators, dump trucks and loaders in a supervised sand arena. No experience needed.
+      </p>
+      <ul class="feature-list">
+        <li>
+          <div class="check">✓</div>
+          <span>Remote-controlled excavators, dump trucks and loaders operated by participants — not staff</span>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <span>Purpose-built sand arena with hazard-tape perimeter and branded signage — ready in under 90 minutes</span>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <span>Two tiers: Little Diggers for ages 3–6, and Pro Operators for ages 6+ and adults</span>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <span>Seasonal challenges — Egg Hunt, Treasure Dig, timed missions — add extra fun</span>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <span>Fully portable. Works at outdoor festivals or indoor venues. Card payments accepted on-site</span>
+        </li>
+      </ul>
+    </div>
+    <div class="what-visual">
+      <img src="images/setup-tent.jpg" alt="The Diggers Play sand arena set up at an outdoor event">
+      <div class="what-visual-tag">The Construction Zone</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery">
+  <div class="gallery-item"><img src="images/arena-topdown.jpg" alt="Remote control diggers working in the sand arena"></div>
+  <div class="gallery-item"><img src="images/setup-egghunt.jpg" alt="Egg Hunter Challenge at The Diggers Play"></div>
+  <div class="gallery-item"><img src="images/action-wide.jpg" alt="RC excavators in action"></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-tag" style="color: #888;">How It Works</div>
+  <h2>Simple for Organisers. Unforgettable for Guests.</h2>
+  <p class="lead">Whether you're booking us for your event or we're running our own pop-up, the process is the same.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Enquire</h3>
+      <p>Send us your event details through the form or call us. We confirm availability and the space we'll need.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>We Set Up</h3>
+      <p>We arrive and build the arena — sand, diggers, hazard tape and signage — typically within 90 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Guests Play</h3>
+      <p>Participants choose their tier and operate the machines. We supervise, reset and manage the queue throughout.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Pack Down</h3>
+      <p>At the end of the event we clear everything away and leave the area clean. No mess left behind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers">
+  <div class="section-tag">The Two Tiers</div>
+  <h2>Built for Every Age</h2>
+  <p class="lead">
+    Two clear options so everyone gets the right level of machine and challenge. Session length and rates are confirmed at the time of booking.
+  </p>
+
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-icon">🚜</div>
+      <div class="tier-age">Ages 3 – 6</div>
+      <div class="tier-title">Little Diggers</div>
+      <p class="tier-desc">Smaller diggers with simple, forgiving controls. Always supervised, and perfect for first-timers getting their hands on the controls for the first time.</p>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-icon">🏗️</div>
+      <div class="tier-age">Ages 6+ &amp; Adults</div>
+      <div class="tier-title">Pro Operators</div>
+      <p class="tier-desc">Full-size RC excavators with advanced controls for older children and adults. Timed challenges and missions available for a competitive edge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="section-tag">Where We Appear</div>
+  <h2>Perfect For Every Type of Event</h2>
+  <p class="lead">We've operated at festivals, school fairs, shopping centres and private celebrations. If there's space for an arena, we can be there.</p>
+
+  <div class="events-grid">
+    <div class="event-tile">
+      <div class="event-icon">🎪</div>
+      <div class="event-name">Festivals &amp; Fairs</div>
+      <p class="event-desc">Public events, summer fairs, outdoor markets and community festivals.</p>
+    </div>
+    <div class="event-tile">
+      <div class="event-icon">🎂</div>
+      <div class="event-name">Birthday Parties</div>
+      <p class="event-desc">A construction-themed experience that works for garden and indoor venues.</p>
+    </div>
+    <div class="event-tile">
+      <div class="event-icon">🏫</div>
+      <div class="event-name">Schools</div>
+      <p class="event-desc">School fairs, end-of-term events and STEM engagement days.</p>
+    </div>
+    <div class="event-tile">
+      <div class="event-icon">🛍️</div>
+      <div class="event-name">Shopping Centres</div>
+      <p class="event-desc">Footfall-driving activations ideal for weekend and school-holiday events.</p>
+    </div>
+    <div class="event-tile">
+      <div class="event-icon">💼</div>
+      <div class="event-name">Corporate Events</div>
+      <p class="event-desc">Team building, staff parties and branded client entertainment.</p>
+    </div>
+    <div class="event-tile">
+      <div class="event-icon">🎗️</div>
+      <div class="event-name">Charity &amp; Community</div>
+      <p class="event-desc">Fundraising events where every session supports your cause.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE US -->
+<section class="hire" id="hire">
+  <div class="section-tag">How To Book Us</div>
+  <h2>Two Ways to Work Together</h2>
+  <p class="lead">Choose whether you want us to run the experience independently at your public event, or as an exclusive attraction at your private event.</p>
+
+  <div class="hire-cards">
+    <div class="hire-card">
+      <h3>Pop-Up at Your Event</h3>
+      <p>We set up our arena at your festival, fair or market and operate independently, charging guests directly per session. You get a high-quality attraction that fills dwell time — at no cost to you.</p>
+      <ul class="hire-includes">
+        <li>We handle all payments and supervision</li>
+        <li>No upfront cost to the organiser</li>
+        <li>Revenue-share arrangements available for larger events</li>
+        <li>Branded signage and construction-zone theming included</li>
+        <li>Suitable for minimum 3-hour event slots</li>
+      </ul>
+    </div>
+
+    <div class="hire-card">
+      <h3>Exclusive Private Hire</h3>
+      <p>Book the full experience for your private event — birthday party, wedding, corporate day or school fair. Your guests play for free; you pay a single hire fee that covers setup, operation and breakdown.</p>
+      <ul class="hire-includes">
+        <li>Full arena setup and branded theming</li>
+        <li>Dedicated operator supervision throughout</li>
+        <li>Sessions for your guests during the hire period</li>
+        <li>Seasonal challenge add-ons (Egg Hunt, Treasure Dig)</li>
+        <li>Half-day and full-day options available</li>
+        <li>Tailored to your event theme on request</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-tag">Reviews</div>
+  <h2>What Guests Say</h2>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The kids absolutely loved it — we had to drag them away when their session ended. Ran incredibly smoothly and the operator was brilliant with the younger ones."</p>
+      <div class="testi-author">Sarah M. — Birthday Party, Nottinghamshire</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"One of the standout attractions at our spring fair. Constant queue from opening to close. We'll definitely have them back next year."</p>
+      <div class="testi-author">Event Organiser — Community Fair</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Even the dads couldn't stop playing. We booked it for our corporate family day and it was the most-talked-about activity of the day."</p>
+      <div class="testi-author">Events Manager — Corporate Family Day</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking" id="contact">
+  <div class="booking-hazard"></div>
+  <div class="booking-grid">
+    <div>
+      <div class="section-tag" style="color: #555;">Get In Touch</div>
+      <h2>Enquire to Book</h2>
+      <p class="lead">Tell us about your event and we'll come back to you within 24 hours with availability and a quote.</p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="label">Phone</span>
+          <span class="value"><a href="tel:07961620053">07961 620 053</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <span class="value"><a href="mailto:info@thediggersplay.co.uk">info@thediggersplay.co.uk</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Coverage area</span>
+          <span class="value">Nottinghamshire &amp; surrounding counties</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Payment</span>
+          <span class="value">Card &amp; Cash accepted on-site</span>
+        </div>
+      </div>
+    </div>
+
+    <form name="booking" method="POST" data-netlify="true" action="/thank-you">
+      <input type="hidden" name="form-name" value="booking">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Tell Us About Your Event</label>
+        <textarea id="message" name="message" rows="5" placeholder="Event type, date, location, expected number of guests, age range, any special requirements..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Enquiry →</button>
+      <p class="form-note">We respond within 24 hours. No commitment required at this stage.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Diggers <span>Play</span></div>
+  <p class="footer-text">© 2026 The Diggers Play. All rights reserved. Nottinghamshire, UK.</p>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
