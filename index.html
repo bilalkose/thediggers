@@ -504,7 +504,7 @@
     letter-spacing: 1.2px; text-transform: uppercase;
     color: #999; margin-bottom: 0.45rem;
   }
-  .fg input, .fg textarea {
+  .fg input, .fg textarea, .fg select {
     width: 100%;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.14);
@@ -513,8 +513,20 @@
     font-family: 'Inter', sans-serif;
     outline: none; transition: border-color 0.2s; border-radius: 2px;
   }
-  .fg input:focus, .fg textarea:focus { border-color: var(--yellow); }
+  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--yellow); }
   .fg input::placeholder, .fg textarea::placeholder { color: #5a5a5a; }
+  .fg select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C400' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .fg select option { background: #1E1E1E; color: var(--white); }
+  .fg select:invalid { color: #5a5a5a; }
+  .fg select option[value=""] { color: #888; }
 
   .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
@@ -903,13 +915,73 @@
             <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx" required>
           </div>
         </div>
-        <div class="fg">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="fg">
+            <label for="town">Town / City</label>
+            <input type="text" id="town" name="town" placeholder="e.g. Worksop" required>
+          </div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="event-type">Event Type</label>
+            <select id="event-type" name="event-type" required>
+              <option value="" disabled selected>Select event type</option>
+              <option>Birthday Party</option>
+              <option>Festival / Fair</option>
+              <option>School Event</option>
+              <option>Shopping Centre</option>
+              <option>Corporate Event</option>
+              <option>Charity / Community</option>
+              <option>Wedding</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="event-date">Preferred Date</label>
+            <input type="date" id="event-date" name="event-date">
+          </div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="age-group">Children's Age Group</label>
+            <select id="age-group" name="age-group" required>
+              <option value="" disabled selected>Select age group</option>
+              <option>Under 3</option>
+              <option>3–6 years</option>
+              <option>7–12 years</option>
+              <option>Mixed ages / adults too</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="guest-count">Number of Children Expected</label>
+            <select id="guest-count" name="guest-count" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>Up to 10</option>
+              <option>11–20</option>
+              <option>21–40</option>
+              <option>41–70</option>
+              <option>70+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
         </div>
         <div class="fg">
-          <label for="message">Tell Us About Your Event</label>
-          <textarea id="message" name="message" rows="5" placeholder="Event type, date, location, expected number of guests, age range, any special requirements..." required></textarea>
+          <label for="venue-type">Indoor or Outdoor?</label>
+          <select id="venue-type" name="venue-type" required>
+            <option value="" disabled selected>Select venue type</option>
+            <option>Outdoor</option>
+            <option>Indoor</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="message">Anything Else We Should Know? (optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any special requirements, exact venue name, or other details that would help us..."></textarea>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">Send Enquiry →</button>
         <p class="form-note">We respond within 24 hours. No commitment required at this stage.</p>
