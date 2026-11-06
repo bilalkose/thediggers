@@ -63,37 +63,31 @@
     });
   }
 
-  /* Fleet showcase: all machines are in the HTML, this just shows one at a time */
-  var stage = $('#fleetStage');
-  if (stage) {
-    var panels = $$('.fleet-panel', stage), thumbs = $$('#fThumbs button'), cur = 0, x0 = null;
-    var show = function (i, quiet) {
-      cur = (i + panels.length) % panels.length;
-      panels.forEach(function (p, k) { p.hidden = (k !== cur); });
-      thumbs.forEach(function (b, k) {
-        b.setAttribute('aria-pressed', k === cur ? 'true' : 'false');
-        b.tabIndex = k === cur ? 0 : -1;
-      });
-      var img = $('img', panels[cur]);
-      if (img && img.loading === 'lazy') { img.loading = 'eager'; }
-      if (!quiet && thumbs[cur] && thumbs[cur].scrollIntoView) {
-        try { thumbs[cur].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' }); } catch (e) {}
-      }
-    };
-    $('#fPrev').addEventListener('click', function () { show(cur - 1); });
-    $('#fNext').addEventListener('click', function () { show(cur + 1); });
-    thumbs.forEach(function (b, k) { b.addEventListener('click', function () { show(k); }); });
-    $('#fThumbs').addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { show(cur + 1); thumbs[cur].focus(); }
-      if (e.key === 'ArrowLeft') { show(cur - 1); thumbs[cur].focus(); }
-    });
-    stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-    stage.addEventListener('touchend', function (e) {
-      if (x0 === null) { return; }
-      var dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 50) { show(cur + (dx < 0 ? 1 : -1)); }
-      x0 = null;
-    });
-    show(0, true);
-  }
+  /* Fleet carousel: native swipe/scroll; arrows just move one card at a time */
+var track = $('#fleetTrack');
+if (track) {
+var prev = $('#fPrev'), next = $('#fNext');
+var step = function () {
+var c = $('.fleet-card', track);
+return c ? c.getBoundingClientRect().width + 18 : 280;
+};
+var sync = function () {
+if (!prev || !next) { return; }
+prev.disabled = track.scrollLeft < 8;
+next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8;
+};
+var go = function (dir) {
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+track.scrollBy({ left: dir * step(), behavior: reduce ? 'auto' : 'smooth' });
+};
+if (prev) { prev.addEventListener('click', function () { go(-1); }); }
+if (next) { next.addEventListener('click', function () { go(1); }); }
+track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+track.addEventListener('keydown', function (e) {
+if (e.key === 'ArrowRight') { go(1); }
+if (e.key === 'ArrowLeft') { go(-1); }
+});
+window.addEventListener('resize', sync);
+sync();
+}
 })();
