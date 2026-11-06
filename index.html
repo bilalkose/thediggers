@@ -130,64 +130,60 @@
 <section class="wrap" id="fleet" style="padding:72px 24px 24px">
   <div class="center">
     <h2 class="h2">Meet the fleet</h2>
-    <p class="sub">Real remote-control machines, ready to dig, haul and build. Tap a machine to take a closer look.</p>
+    <p class="sub">Real remote-control machines, ready to dig, haul and build. Swipe through the line-up.</p>
   </div>
-  <div class="fleet-stage" id="fleetStage">
-    <button type="button" class="fleet-arrow prev" id="fPrev" aria-label="Previous machine">&#8249;</button>
-    <button type="button" class="fleet-arrow next" id="fNext" aria-label="Next machine">&#8250;</button>
-    <div class="fleet-panel" data-i="0">
+  <div class="fleet-wrap">
+    <button type="button" class="fleet-arrow prev" id="fPrev" aria-label="Previous machines">&#8249;</button>
+    <button type="button" class="fleet-arrow next" id="fNext" aria-label="Next machines">&#8250;</button>
+    <div class="fleet-track" id="fleetTrack" role="region" aria-label="Our machines, swipe or scroll sideways" tabindex="-1">
+    <article class="fleet-card" tabindex="0" aria-label="Green Giant Excavator">
       <div class="fleet-pic"><img src="/photos/green-giant-rc-excavator.webp" width="722" height="522" alt="Green Giant RC excavator with tracks and a large bucket"></div>
       <div class="fleet-info">
         <span class="badge">Excavator</span>
         <h3>Green Giant Excavator</h3>
         <p>The star of the show. Smooth tracked digging for confident little operators and curious grown-ups alike.</p>
         <ul><li>Digging</li><li>Loading trucks</li><li>Treasure hunts</li></ul>
-        <a class="btn btn-red" href="#book">Book your date</a>
       </div>
-    </div>
-    <div class="fleet-panel" data-i="1">
-      <div class="fleet-pic"><img src="/photos/rc-wheel-loader.webp" width="720" height="474" alt="Yellow RC wheel loader with a front bucket" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="fleet-card" tabindex="0" aria-label="Wheel Loader">
+      <div class="fleet-pic"><img src="/photos/rc-wheel-loader.webp" width="720" height="474" alt="Yellow RC wheel loader with a front bucket"></div>
       <div class="fleet-info">
         <span class="badge">Loader</span>
         <h3>Wheel Loader</h3>
         <p>Scoops, lifts and carries sand across the arena. A friendly first machine for new drivers.</p>
         <ul><li>Scooping</li><li>Carrying</li><li>Easy to learn</li></ul>
-        <a class="btn btn-red" href="#book">Book your date</a>
       </div>
-    </div>
-    <div class="fleet-panel" data-i="2">
+    </article>
+    <article class="fleet-card" tabindex="0" aria-label="Pro Excavator">
       <div class="fleet-pic"><img src="/photos/pro-rc-excavator.webp" width="720" height="471" alt="Large black Pro RC excavator with a long digging arm" loading="lazy" decoding="async"></div>
       <div class="fleet-info">
         <span class="badge">Pro Operators</span>
         <h3>Pro Excavator</h3>
         <p>Bigger controls and finer precision for ages 6+ and adults. Great for tasks, challenges and team races.</p>
         <ul><li>Ages 6+ and adults</li><li>Precision tasks</li><li>Team challenges</li></ul>
-        <a class="btn btn-red" href="#book">Book your date</a>
       </div>
-    </div>
-    <div class="fleet-panel" data-i="3">
+    </article>
+    <article class="fleet-card" tabindex="0" aria-label="Dump Truck">
       <div class="fleet-pic"><img src="/photos/rc-dump-truck.webp" width="720" height="493" alt="Yellow RC dump truck with a tipping body" loading="lazy" decoding="async"></div>
       <div class="fleet-info">
         <span class="badge">Truck</span>
         <h3>Dump Truck</h3>
         <p>Load it up, haul it across, tip it out. Perfect for relay races and moving mountains of sand.</p>
         <ul><li>Hauling</li><li>Tipping</li><li>Relay races</li></ul>
-        <a class="btn btn-red" href="#book">Book your date</a>
       </div>
-    </div>
-    <div class="fleet-panel" data-i="4">
+    </article>
+    <article class="fleet-card" tabindex="0" aria-label="Tipper Truck">
       <div class="fleet-pic"><img src="/photos/rc-tipper-truck.webp" width="720" height="460" alt="Yellow multi-axle RC tipper truck with its body raised" loading="lazy" decoding="async"></div>
       <div class="fleet-info">
         <span class="badge">Truck</span>
         <h3>Tipper Truck</h3>
         <p>The heavy hauler of the fleet. A big multi-axle tipper for group tasks and construction challenges.</p>
         <ul><li>Heavy hauling</li><li>Group tasks</li><li>Site challenges</li></ul>
-        <a class="btn btn-red" href="#book">Book your date</a>
       </div>
+    </article>
     </div>
   </div>
-  <div class="fleet-thumbs" id="fThumbs"><button type="button" aria-pressed="true" aria-label="Show Green Giant Excavator"><img src="/photos/green-giant-rc-excavator-thumb.webp" width="240" height="174" alt="" loading="lazy">Green Giant</button><button type="button" aria-pressed="false" aria-label="Show Wheel Loader"><img src="/photos/rc-wheel-loader-thumb.webp" width="240" height="158" alt="" loading="lazy">Wheel Loader</button><button type="button" aria-pressed="false" aria-label="Show Pro Excavator"><img src="/photos/pro-rc-excavator-thumb.webp" width="240" height="157" alt="" loading="lazy">Pro Excavator</button><button type="button" aria-pressed="false" aria-label="Show Dump Truck"><img src="/photos/rc-dump-truck-thumb.webp" width="240" height="164" alt="" loading="lazy">Dump Truck</button><button type="button" aria-pressed="false" aria-label="Show Tipper Truck"><img src="/photos/rc-tipper-truck-thumb.webp" width="240" height="153" alt="" loading="lazy">Tipper Truck</button></div>
-  <p class="fleet-note">Machines used can vary by event and package.</p>
+  <p class="fleet-note">Swipe or use the arrows to see all five machines. Machines used can vary by event and package.</p>
 </section>
 
 <section class="wrap" id="corporate" style="padding-top:8px">
